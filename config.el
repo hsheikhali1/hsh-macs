@@ -165,7 +165,7 @@ sp-point-before-same-p)))
 
 (helm-mode 1)
 
-(load-theme 'manoj-dark)
+(load-theme 'exotica)
 
 (use-package company
 :diminish company-mode
@@ -298,3 +298,7 @@ company-debbrev-downcase nil)
 	(org-superstar-special-todo-items t)
 	(org-superstar-leading-bullet "")
 	)
+
+(use-package telephone-line)
+
+(telephone-line-mode 1)

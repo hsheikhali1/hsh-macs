@@ -205,7 +205,7 @@ Then this configuration might be a good place for you to start learning emacs.
 	 #+END_SRC
 ** Themeing Plugins
 	 #+BEGIN_SRC emacs-lisp
-	 (load-theme 'leuven)
+	 (load-theme 'exotica)
 	 #+END_SRC
 ** Company
 	 #+BEGIN_SRC emacs-lisp
@@ -359,3 +359,9 @@ Then this configuration might be a good place for you to start learning emacs.
 			 (org-superstar-leading-bullet "")
 			 )
 	 #+END_SRC
+** Modeline
+#+BEGIN_SRC emacs-lisp
+(use-package telephone-line)
+
+(telephone-line-mode 1)
+#+END_SRC
