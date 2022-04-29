@@ -205,7 +205,7 @@ Then this configuration might be a good place for you to start learning emacs.
 	 #+END_SRC
 ** Themeing Plugins
 	 #+BEGIN_SRC emacs-lisp
-	 (load-theme 'manoj-dark)
+	 (load-theme 'leuven)
 	 #+END_SRC
 ** Company
 	 #+BEGIN_SRC emacs-lisp
