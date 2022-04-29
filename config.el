@@ -301,4 +301,5 @@ company-debbrev-downcase nil)
 
 (use-package telephone-line)
 
-(telephone-line-mode 1)
+;;(telephone-line-mode 1)
+(mood-line-mode)
