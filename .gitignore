@@ -5,3 +5,5 @@ transient
 url
 projectile-bookmarks.eld
 .cache/
+.lsp-session-*
+session.*
