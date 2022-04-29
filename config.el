@@ -169,6 +169,9 @@ sp-point-before-same-p)))
 
 (use-package company
 :diminish company-mode
+:hook ((emacs-lisp-mode . (lambda ()
+(setq-local company-backends '(company-elisp))))
+(emacs-list-mode . company-mode))
 :init
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-minimum-prefix-length 2
@@ -219,8 +222,18 @@ company-debbrev-downcase nil)
 (use-package lsp-ui)
 
 (use-package go-mode
+:ensure t
 :hook ((go-mode . lsp))
+:bind (:map go-mode-map
+("<f6>" . gofmt)
+("C-c 6" . gofmt))
 :config
+    (setq lsp-go-analysis
+    '((fieldalignment . t)
+    (nilness . t)
+    (unusedwrite . t)
+    (unusedparams .t)))
+(setq gofmt-command "goimports")
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4))
 
@@ -299,7 +312,5 @@ company-debbrev-downcase nil)
 	(org-superstar-leading-bullet "")
 	)
 
-(use-package telephone-line)
-
-;;(telephone-line-mode 1)
+(use-package mood-line)
 (mood-line-mode)
