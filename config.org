@@ -38,6 +38,7 @@ Then this configuration might be a good place for you to start learning emacs.
 * Basic UI Configurations
   #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t)
+	(menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
   (tooltip-mode -1)
