@@ -78,19 +78,25 @@ Then this configuration might be a good place for you to start learning emacs.
   #+END_SRC
 ** Font configuration
    #+BEGIN_SRC emacs-lisp
-		 (set-face-attribute 'default nil :font "Iosevka" :weight 'semibold :height 200)
-		 (set-face-attribute 'fixed-pitch nil :font "Iosevka" :weight
-		 'semibold :height 200)
+   (set-face-attribute 'default nil :font "Iosevka" :weight 'semibold :height 170)
+   (set-face-attribute 'fixed-pitch nil :font "Iosevka" :weight
+   'semibold :height 170)
    #+END_SRC
 * Repos and Core Packages
+** Swiper (no swipping lolz)
+   #+BEGIN_SRC emacs-lisp
+   (use-package swiper
+   :ensure t)
+   #+END_SRC
 ** Magit
    #+BEGIN_SRC emacs-lisp
-   (use-package magit)
+   (use-package magit
+   :ensure t)
    #+END_SRC
 ** Parens Mode
    #+BEGIN_SRC emacs-lisp
    (use-package paren
-   :ensure nil
+   :ensure t
    :config
    (setq show-paren-delay 0.1
    show-paren-highlight-openparen t
@@ -212,6 +218,9 @@ Then this configuration might be a good place for you to start learning emacs.
 	 #+BEGIN_SRC emacs-lisp
 		 (use-package company
 		 :diminish company-mode
+		 :hook ((emacs-lisp-mode . (lambda ()
+		 (setq-local company-backends '(company-elisp))))
+		 (emacs-list-mode . company-mode))
 		 :init
 		 (add-hook 'after-init-hook 'global-company-mode)
 		 (setq company-minimum-prefix-length 2
@@ -270,8 +279,18 @@ Then this configuration might be a good place for you to start learning emacs.
 ** Go Mode
    #+BEGIN_SRC emacs-lisp
      (use-package go-mode
+     :ensure t
      :hook ((go-mode . lsp))
+     :bind (:map go-mode-map
+     ("<f6>" . gofmt)
+     ("C-c 6" . gofmt))
      :config
+	 (setq lsp-go-analysis
+	 '((fieldalignment . t)
+	 (nilness . t)
+	 (unusedwrite . t)
+	 (unusedparams .t)))
+     (setq gofmt-command "goimports")
      (setq-default indent-tabs-mode nil)
      (setq-default tab-width 4))
    #+END_SRC

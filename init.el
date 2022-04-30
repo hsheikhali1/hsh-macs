@@ -11,7 +11,7 @@
  '(lsp-ui-doc-alignment 'window)
  '(lsp-ui-doc-position 'at-point)
  '(package-selected-packages
-	 '(all-the-icons-dired all-the-icons telephone-line nano-modeline powerline-evil mood-line rainbow-delimiters monokai-theme vs-light-theme vscode-dark-plus-theme exotica-theme markdown-preview-mode vterm magit lsp-ui hl-todo yasnippet-snippets swiper exec-path-from-shell go-mode highlight-indent-guides smartparens cmake-mode use-package gcmh)))
+	 '(all-the-icons-gnus all-the-icons-dired all-the-icons telephone-line nano-modeline powerline-evil mood-line rainbow-delimiters monokai-theme vs-light-theme vscode-dark-plus-theme exotica-theme markdown-preview-mode vterm magit lsp-ui hl-todo yasnippet-snippets swiper exec-path-from-shell go-mode highlight-indent-guides smartparens cmake-mode use-package gcmh)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
