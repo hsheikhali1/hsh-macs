@@ -71,6 +71,11 @@ Then this configuration might be a good place for you to start learning emacs.
 		(setq-default truncate-lines t)
 		(setq-default tab-width 2)
 		(setq-default fill-column 80)
+        
+        ;; stop emacs from creating annoying backup files..
+        (setq make-backup-files nil)
+        ;; stop emacs from creating autosave files (eg: #main.go#)
+        (setq auto-save-default nil)
 
 		;; configure path for linux
 		(when (memq window-system '(mac ns x))
@@ -212,7 +217,7 @@ Then this configuration might be a good place for you to start learning emacs.
 	 #+END_SRC
 ** Themeing Plugins
 	 #+BEGIN_SRC emacs-lisp
-	 (load-theme 'exotica)
+	 (load-theme 'leuven t)
 	 #+END_SRC
 ** Company
 	 #+BEGIN_SRC emacs-lisp

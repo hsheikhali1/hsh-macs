@@ -15,6 +15,7 @@
 (setq use-package-always-ensure t)
 
 (setq inhibit-startup-message t)
+      (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
@@ -50,14 +51,18 @@ gcs-done)))
 (when (memq window-system '(mac ns x))
 (exec-path-from-shell-initialize))
 
-(set-face-attribute 'default nil :font "Iosevka" :weight 'semibold :height 200)
+(set-face-attribute 'default nil :font "Iosevka" :weight 'semibold :height 170)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka" :weight
-'semibold :height 200)
+'semibold :height 170)
 
-(use-package magit)
+(use-package swiper
+:ensure t)
+
+(use-package magit
+:ensure t)
 
 (use-package paren
-:ensure nil
+:ensure t
 :config
 (setq show-paren-delay 0.1
 show-paren-highlight-openparen t
@@ -165,7 +170,7 @@ sp-point-before-same-p)))
 
 (helm-mode 1)
 
-(load-theme 'exotica)
+(load-theme 'leuven t)
 
 (use-package company
 :diminish company-mode
