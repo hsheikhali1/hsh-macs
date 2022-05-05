@@ -18,21 +18,21 @@ Then this configuration might be a good place for you to start learning emacs.
 
 * Package Configuration
   #+BEGIN_SRC emacs-lisp
-		(require 'package)
+    (require 'package)
 
-		(add-to-list 'package-archives
-		'("melpa" . "https://melpa.org/packages/") t)
+    (add-to-list 'package-archives
+                 '("melpa" . "https://melpa.org/packages/") t)
 
-		(package-initialize)
+    (package-initialize)
 
-		;; Bootstrap
-		(unless (package-installed-p 'use-package)
-		(package-refresh-contents)
-		(package-install 'use-package))
-		(eval-when-compile
-		(require 'use-package))
-		(require 'bind-key)
-		(setq use-package-always-ensure t)
+    ;; Bootstrap
+    (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+    (eval-when-compile
+      (require 'use-package))
+    (require 'bind-key)
+    (setq use-package-always-ensure t)
   #+END_SRC
 
 * Basic UI Configurations
