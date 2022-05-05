@@ -23,37 +23,52 @@
 (setq visible-bell t)
 
 (use-package gcmh
-:diminish gcmh-mode
-:config
-(setq gcmh-idle-delay 5
-gcmh-high-cons-threshold (* 16 1024 1024)) ;; this represets 16mb
-(gcmh-mode 1))
-(add-hook 'emacs-startup-hook
-(lambda ()
-(setq gc-cons-percentage 0.1)))
+						:diminish gcmh-mode
+						:config
+						(setq gcmh-idle-delay 5
+						gcmh-high-cons-threshold (* 16 1024 1024)) ;; this represets 16mb
+						(gcmh-mode 1))
+						(add-hook 'emacs-startup-hook
+						(lambda ()
+						(setq gc-cons-percentage 0.1)))
 
-(add-hook 'emacs-startup-hook
-(lambda ()
-(message "Emacs ready in %s with %d garbage collections."
-(format "%.2f seconds"
-(float-time
-(time-subtract after-init-time before-init-time)))
-gcs-done)))
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq confirm-kill-emacs 'yes-or-no-p)
-(setq frame-resize-pixelwise t)
-(setq window-resize-pixelwise nil)
-(setq-default truncate-lines t)
-(setq-default tab-width 2)
-(setq-default fill-column 80)
+						(add-hook 'emacs-startup-hook
+						(lambda ()
+						(message "Emacs ready in %s with %d garbage collections."
+						(format "%.2f seconds"
+						(float-time
+						(time-subtract after-init-time before-init-time)))
+						gcs-done)))
+						(fset 'yes-or-no-p 'y-or-n-p)
+						(setq confirm-kill-emacs 'yes-or-no-p)
+						(setq frame-resize-pixelwise t)
+						(setq window-resize-pixelwise nil)
+						(setq-default truncate-lines t)
+						(setq-default tab-width 2)
+						(setq-default fill-column 80)
 
-;; configure path for linux
-(when (memq window-system '(mac ns x))
-(exec-path-from-shell-initialize))
+								;; stop emacs from creating annoying backup files..
+								(setq make-backup-files nil)
+								;; stop emacs from creating autosave files (eg: #main.go#)
+								(setq auto-save-default nil)
 
-(set-face-attribute 'default nil :font "Iosevka" :weight 'semibold :height 170)
-(set-face-attribute 'fixed-pitch nil :font "Iosevka" :weight
-'semibold :height 170)
+						;; configure path for linux
+				(when (memq window-system '(mac ns x))
+		(exec-path-from-shell-initialize))
+				(setq org-src-tab-acts-natively t)
+
+		;; format org mode babel src blocks
+		(defun udf/my-org-tab-dwim (&optional arg)
+  (interactive)
+  (or (org-babel-do-key-sequence-in-edit-buffer (kbd "TAB"))
+      (org-cycle arg)))
+
+(define-key org-mode-map
+  (kbd "<tab>") #'udf/my-org-tab-dwim)
+
+(set-face-attribute 'default nil :font "JetBrains Mono" :weight 'Bold :height 130)
+(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight
+'Bold :height 130)
 
 (use-package swiper
 :ensure t)
@@ -170,7 +185,7 @@ sp-point-before-same-p)))
 
 (helm-mode 1)
 
-(load-theme 'leuven t)
+(load-theme 'dracula t)
 
 (use-package company
 :diminish company-mode
@@ -225,6 +240,10 @@ company-debbrev-downcase nil)
 (use-package lsp-mode
 	:commands (lsp lsp-deferred))
 (use-package lsp-ui)
+
+;; prettier
+(use-package prettier-js
+:ensure t)
 
 (use-package go-mode
 :ensure t
@@ -317,5 +336,10 @@ company-debbrev-downcase nil)
 	(org-superstar-leading-bullet "")
 	)
 
-(use-package mood-line)
-(mood-line-mode)
+(use-package spaceline
+				:ensure t
+				:config
+				(require 'spaceline-config)
+		(spaceline-spacemacs-theme)
+		(setq powerline-default-separator 'arrow)
+(spaceline-compile))
