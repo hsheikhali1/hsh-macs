@@ -391,5 +391,10 @@
 	(org-superstar-leading-bullet "")
 	)
 
+(use-package doom-modeline
+      :init (doom-modeline-mode)
+      :config
+      (setq doom-modeline-modal-icon nil))
+
 (use-package yasnippet
       :init (yas-global-mode 1))

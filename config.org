@@ -474,11 +474,13 @@ _packages that will aid in development_
 		   )
 	 #+END_SRC
 ** Modeline
+	#+BEGIN_SRC emacs-lisp
 	  (use-package doom-modeline
 		:init (doom-modeline-mode)
 		:config
 		(setq doom-modeline-modal-icon nil))
 	#+END_SRC
+
 
 ** Yasnippet
 #+begin_src emacs-lisp
