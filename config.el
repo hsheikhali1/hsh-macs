@@ -54,9 +54,11 @@
 ;; stop emacs from creating autosave files (eg: #main.go#)
 (setq auto-save-default nil)
 
-		;; configure path for linux
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+;; configure path for linux
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns x))
+	(exec-path-from-shell-initialize)))
 
 (setq org-src-tab-acts-natively t)
 
@@ -234,7 +236,9 @@
       :config
       (setq counsel-switch-buffer-preview-virtual-buffers nil))
 
-(load-theme 'doom-challenger-deep t)
+(use-package doom-themes
+      :config
+      (load-theme 'doom-challenger-deep t))
 
 (use-package company
 		       :diminish company-mode
@@ -269,15 +273,18 @@
       (define-key company-active-map (kbd "RET") #'company-complete-selection))
 
 (use-package general
-	:config
-	(general-define-key
-	       :states '(normal motion visual)
-	       :keymaps 'override
-	       :prefix ","
-	       "f" '(counsel-find-file :which-key "find files")
-	       "p" '(projectile--find-file :whick-key "Find files in the current project")
-	       "s" '(projectile-switch-project :which-key "Switch project")
-	       "b" '(counsel-switch-buffer :which-key "Switch buffers")))
+      :config
+      (general-define-key
+       :states '(normal motion visual)
+       :keymaps 'override
+       :prefix ","
+       "f" '(counsel-find-file :which-key "find files")
+       "p" '(projectile--find-file :whick-key "Find files in the current project")
+       "s" '(projectile-switch-project :which-key "Switch project")
+       "b" '(counsel-switch-buffer :which-key "Switch buffers")
+       "/" '(counsel-rg :which-key "Find text")
+   "g" '(counsel-git-checkout :which-key "Git checkout")
+       ))
 
 (use-package which-key
 	:diminish which-key-mode

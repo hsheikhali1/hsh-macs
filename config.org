@@ -323,15 +323,18 @@ Then this configuration might be a good place for you to start learning emacs.
 ** General
 	 #+BEGIN_SRC emacs-lisp
 	   (use-package general
-		   :config
-		   (general-define-key
-			  :states '(normal motion visual)
-			  :keymaps 'override
-			  :prefix ","
-			  "f" '(counsel-find-file :which-key "find files")
-			  "p" '(projectile--find-file :whick-key "Find files in the current project")
-			  "s" '(projectile-switch-project :which-key "Switch project")
-			  "b" '(counsel-switch-buffer :which-key "Switch buffers")))
+		 :config
+		 (general-define-key
+		  :states '(normal motion visual)
+		  :keymaps 'override
+		  :prefix ","
+		  "f" '(counsel-find-file :which-key "find files")
+		  "p" '(projectile--find-file :whick-key "Find files in the current project")
+		  "s" '(projectile-switch-project :which-key "Switch project")
+		  "b" '(counsel-switch-buffer :which-key "Switch buffers")
+		  "/" '(counsel-rg :which-key "Find text")
+	      "g" '(counsel-git-checkout :which-key "Git checkout")
+		  ))
 	 #+END_SRC
 ** Which-key
 	 #+BEGIN_SRC emacs-lisp
