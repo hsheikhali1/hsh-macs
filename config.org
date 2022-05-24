@@ -78,9 +78,11 @@ Then this configuration might be a good place for you to start learning emacs.
 	;; stop emacs from creating autosave files (eg: #main.go#)
 	(setq auto-save-default nil)
 
-			;; configure path for linux
-	(when (memq window-system '(mac ns x))
-	  (exec-path-from-shell-initialize))
+	;; configure path for linux
+	(use-package exec-path-from-shell
+	  :config
+	  (when (memq window-system '(mac ns x))
+		(exec-path-from-shell-initialize)))
 
 	(setq org-src-tab-acts-natively t)
 
@@ -230,20 +232,6 @@ Then this configuration might be a good place for you to start learning emacs.
 	   (use-package projectile-ripgrep
 		 :ensure t)
 	 #+END_SRC
-** HELM
-	 # #+BEGIN_SRC emacs-lisp
-	 #   (use-package helm
-	 #   :ensure
-	 #   :config
-	 #   (require 'helm-config))
-
-	 #   ;; re-map some global bindings to be helm
-	 #   (global-set-key (kbd "M-x") #'helm-M-x)
-	 #   (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-	 #   (global-set-key (kbd "C-x C-f") #'helm-find-files)
-
-	 #   (helm-mode 1)
-	 #+END_SRC
 ** Ivy
 	#+BEGIN_SRC emacs-lisp
 			(use-package ivy
@@ -294,7 +282,9 @@ Then this configuration might be a good place for you to start learning emacs.
 	#+END_SRC
 ** Themeing Plugins
 	 #+BEGIN_SRC emacs-lisp
-	   (load-theme 'doom-challenger-deep t)
+	   (use-package doom-themes
+		 :config
+		 (load-theme 'doom-challenger-deep t))
 	 #+END_SRC
 ** Company
 	 #+BEGIN_SRC emacs-lisp
