@@ -219,12 +219,6 @@ Then this configuration might be a good place for you to start learning emacs.
 		 :after evil
 		 :config
 		 (evil-snipe-mode +1))
-
-	   ;; manually load commentary
-	   ;; (add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
-	   ;; (require 'evil-commentary)
-	   ;; (evil-commentary-mode)
-
 	 #+END_SRC
 ** Projectile
 	 #+BEGIN_SRC emacs-lisp
@@ -392,13 +386,13 @@ _packages that will aid in development_
    #+END_SRC
 ** Typescript Mode
 	 #+BEGIN_SRC emacs-lisp
-		 (use-package typescript-mode
-			 :hook (
-							(typescript-mode . lsp)
-							(typescript-mode . highlight-indent-guides-mode)
-							)
-			 :config
-			 (setq-default typescript-indent-level 2))
+	   (use-package typescript-mode
+		 :hook (
+				(typescript-mode . lsp)
+				(typescript-mode . highlight-indent-guides-mode)
+				)
+		   :config
+		   (setq-default typescript-indent-level 2))
 	 #+END_SRC
 ** Web Mode
 	 #+BEGIN_SRC emacs-lisp
@@ -419,6 +413,7 @@ _packages that will aid in development_
 	   ;; TODO -- Add other web mode hook configs
 	   ;; TODO -- Add other language support like react, eslint etc
 
+	   (use-package emmet-mode)
 
 	   (use-package web-mode
 		 :hook (
@@ -429,6 +424,10 @@ _packages that will aid in development_
 				)
 		   :commands (web-mode)
 		   :mode (("\\.tsx\\'" . web-mode)
+				  ("\\.tsx\\'" . emmet-mode)
+				  ("\\.jsx\\'" . emmet-mode)
+				  ("\\.js\\'" . emmet-mode) ;; if js is used for react files
+				  ("\\.html\\'" . emmet-mode)
 				  ("\\.html\\'" . web-mode)))
 
 	 #+END_SRC

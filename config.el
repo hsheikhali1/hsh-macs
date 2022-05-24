@@ -183,11 +183,6 @@
       :config
       (evil-snipe-mode +1))
 
-;; manually load commentary
-(add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
-(require 'evil-commentary)
-(evil-commentary-mode)
-
 (use-package projectile)
 (projectile-mode 1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
@@ -317,10 +312,10 @@
 	(setq-default tab-width 4))
 
 (use-package typescript-mode
-	:hook (
-				       (typescript-mode . lsp)
-				       (typescript-mode . highlight-indent-guides-mode)
-				       )
+      :hook (
+		     (typescript-mode . lsp)
+		     (typescript-mode . highlight-indent-guides-mode)
+		     )
 	:config
 	(setq-default typescript-indent-level 2))
 
@@ -341,6 +336,7 @@
 ;; TODO -- Add other web mode hook configs
 ;; TODO -- Add other language support like react, eslint etc
 
+(use-package emmet-mode)
 
 (use-package web-mode
       :hook (
@@ -351,6 +347,10 @@
 		     )
 	:commands (web-mode)
 	:mode (("\\.tsx\\'" . web-mode)
+		       ("\\.tsx\\'" . emmet-mode)
+		       ("\\.jsx\\'" . emmet-mode)
+		       ("\\.js\\'" . emmet-mode) ;; if js is used for react files
+		       ("\\.html\\'" . emmet-mode)
 		       ("\\.html\\'" . web-mode)))
 
 (use-package flycheck)
