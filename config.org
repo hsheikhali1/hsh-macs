@@ -101,6 +101,11 @@ Then this configuration might be a good place for you to start learning emacs.
 	 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'Bold :height 130)
    #+END_SRC
 * Repos and Core Packages
+** Highlight indent lines
+	#+BEGIN_SRC emacs-lisp
+	  (use-package highlight-indent-guides)
+	  (highlight-indent-guides-mode 1)
+	#+END_SRC
 ** Swiper (no swipping lolz)
    #+BEGIN_SRC emacs-lisp
 		 (use-package swiper
@@ -216,9 +221,9 @@ Then this configuration might be a good place for you to start learning emacs.
 		 (evil-snipe-mode +1))
 
 	   ;; manually load commentary
-	   ;;(add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
-	   ;;(require 'evil-commentary)
-	   ;;(evil-commentary-mode)
+	   ;; (add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
+	   ;; (require 'evil-commentary)
+	   ;; (evil-commentary-mode)
 
 	 #+END_SRC
 ** Projectile
@@ -429,7 +434,6 @@ _packages that will aid in development_
 	 #+END_SRC
 ** Flycheck Mode
 	 #+BEGIN_SRC emacs-lisp
-
 		 (use-package flycheck)
 		 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -471,34 +475,15 @@ _packages that will aid in development_
 		   )
 	 #+END_SRC
 ** Modeline
-	#+BEGIN_SRC emacs-lisp
-	  ;; (use-package spaceline
-	  ;;   :ensure t
-	  ;;   :config
-	  ;;   (require 'spaceline-config)
-	  ;;   (spaceline-spacemacs-theme)
-	  ;;   (setq powerline-default-separator 'box)
-	  ;;   (spaceline-compile))
-
-	  ;; look into using doom-modeline?
 	  (use-package doom-modeline
 		:init (doom-modeline-mode)
 		:config
 		(setq doom-modeline-modal-icon nil))
 	#+END_SRC
 
-** FuzzyFinder
-potential remove this
-*** Snails
-	#+BEGIN_SRC emacs-lisp
-	  ;(add-to-list 'load-path "~/.emacs.d/external-packages/snails") ; add snails to your load-path
-	  ;(require 'snails)
-	#+END_SRC
-	
 ** Yasnippet
 #+begin_src emacs-lisp
   (use-package yasnippet
 	:init (yas-global-mode 1))
-
-  ;; TODO: make sure I install all the other plugins for yas-snippets
 #+end_src
+

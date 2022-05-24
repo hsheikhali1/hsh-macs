@@ -74,6 +74,9 @@
 (set-face-attribute 'default nil :font "JetBrains Mono" :weight 'Bold :height 130)
 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'Bold :height 130)
 
+(use-package highlight-indent-guides)
+(highlight-indent-guides-mode 1)
+
 (use-package swiper
 	:ensure t)
 
@@ -181,9 +184,9 @@
       (evil-snipe-mode +1))
 
 ;; manually load commentary
-;;(add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
-;;(require 'evil-commentary)
-;;(evil-commentary-mode)
+(add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
+(require 'evil-commentary)
+(evil-commentary-mode)
 
 (use-package projectile)
 (projectile-mode 1)
@@ -388,24 +391,5 @@
 	(org-superstar-leading-bullet "")
 	)
 
-;; (use-package spaceline
-;;   :ensure t
-;;   :config
-;;   (require 'spaceline-config)
-;;   (spaceline-spacemacs-theme)
-;;   (setq powerline-default-separator 'box)
-;;   (spaceline-compile))
-
-;; look into using doom-modeline?
-(use-package doom-modeline
-      :init (doom-modeline-mode)
-      :config
-      (setq doom-modeline-modal-icon nil))
-
-;(add-to-list 'load-path "~/.emacs.d/external-packages/snails") ; add snails to your load-path
-;(require 'snails)
-
 (use-package yasnippet
       :init (yas-global-mode 1))
-
-;; TODO: make sure I install all the other plugins for yas-snippets
