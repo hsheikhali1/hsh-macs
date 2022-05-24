@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: jsdoc-string
+# key: /*
+# --
+
+/**
+ * $0
+ * @param ${1:param_type} ${2:param_name} ${3:param_description}
+ * ${4:param_continued}
+ */

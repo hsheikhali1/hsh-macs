@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: React Functional Component
+# key: rfc
+# --
+
+import React, { FC } from "react";
+
+type Props = {};
+
+export const ${1:function_name}: FC<Props> = () => {
+  return (
+  	<div>$0</div>
+  );
+};

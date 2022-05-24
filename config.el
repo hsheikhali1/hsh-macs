@@ -181,9 +181,9 @@
       (evil-snipe-mode +1))
 
 ;; manually load commentary
-(add-to-list 'load-path "~/.emacs.d/external-packages/evil-commentary")
-(require 'evil-commentary)
-(evil-commentary-mode)
+;;(add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
+;;(require 'evil-commentary)
+;;(evil-commentary-mode)
 
 (use-package projectile)
 (projectile-mode 1)
@@ -402,8 +402,8 @@
       :config
       (setq doom-modeline-modal-icon nil))
 
-(add-to-list 'load-path "~/.emacs.d/external-packages/snails") ; add snails to your load-path
-(require 'snails)
+;(add-to-list 'load-path "~/.emacs.d/external-packages/snails") ; add snails to your load-path
+;(require 'snails)
 
 (use-package yasnippet
       :init (yas-global-mode 1))

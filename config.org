@@ -216,9 +216,9 @@ Then this configuration might be a good place for you to start learning emacs.
 		 (evil-snipe-mode +1))
 
 	   ;; manually load commentary
-	   (add-to-list 'load-path "~/.emacs.d/external-packages/evil-commentary")
-	   (require 'evil-commentary)
-	   (evil-commentary-mode)
+	   ;;(add-to-list 'load-path "/home/hsheikhali/.emacs.d/external-packages/evil-commentary")
+	   ;;(require 'evil-commentary)
+	   ;;(evil-commentary-mode)
 
 	 #+END_SRC
 ** Projectile
@@ -491,8 +491,8 @@ _packages that will aid in development_
 potential remove this
 *** Snails
 	#+BEGIN_SRC emacs-lisp
-	  (add-to-list 'load-path "~/.emacs.d/external-packages/snails") ; add snails to your load-path
-	  (require 'snails)
+	  ;(add-to-list 'load-path "~/.emacs.d/external-packages/snails") ; add snails to your load-path
+	  ;(require 'snails)
 	#+END_SRC
 	
 ** Yasnippet
