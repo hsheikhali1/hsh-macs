@@ -99,8 +99,10 @@ Then this configuration might be a good place for you to start learning emacs.
   #+END_SRC
 ** Font configuration
    #+BEGIN_SRC emacs-lisp
-	 (set-face-attribute 'default nil :font "JetBrains Mono" :weight 'Bold :height 130)
-	 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'Bold :height 130)
+	 ;; (set-face-attribute 'default nil :font "JetBrains Mono" :weight 'Bold :height 130)
+	 ;; (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'Bold :height 130)
+	 (set-face-attribute 'default nil :font "Source Code Pro" :weight 'Medium :height 130)
+	 (set-face-attribute 'fixed-pitch nil :font "Source Code Pro" :weight 'Medium :height 130)
    #+END_SRC
 * Repos and Core Packages
 ** Highlight indent lines
@@ -178,7 +180,7 @@ Then this configuration might be a good place for you to start learning emacs.
 		 (define-key evil-motion-state-map "/" 'swiper)
 		 (define-key evil-window-map "\C-w" 'evil-delete-buffer)
 		 (define-key evil-motion-state-map "\C-b" 'evil-scroll-up)
-
+  
 		 ;; Setting cursor colors
 		 (setq evil-emacs-state-cursor '("#649bce" box))
 		 (setq evil-normal-state-cursor '("#ebcb8b" box))
@@ -187,17 +189,19 @@ Then this configuration might be a good place for you to start learning emacs.
 		 (setq evil-insert-state-cursor '("#eb998b" (bar . 2)))
 		 (setq evil-replace-state-cursor '("#eb998b" hbar))
 		 (setq evil-motion-state-cursor '("#ad8beb" box))
-
+  
 		 (evil-define-key nil 'custom-mode-map
 		   ;;motion
 		   (kbd "C-j") 'widget-forward
 		   (kbd "C-k") 'widget-backwards
 		   "q" 'Custom-buffer-done)
-
+  
 		 ;; define lsp doc stuff
 		 (evil-define-key 'normal 'lsp-ui-doc-mode
 		   [?K] #'lsp-ui-doc-glance)
 
+		 (evil-set-initial-state 'dired-mode 'emacs) ;; enter emacs mode when in dired mode
+  
 		 (dolist (mode '(help-mode-map
 						 calendar-mode-map
 						 (evil-define-key 'motion  mode "q" 'kill-this-buffer))))
@@ -284,7 +288,7 @@ Then this configuration might be a good place for you to start learning emacs.
 	 #+BEGIN_SRC emacs-lisp
 	   (use-package doom-themes
 		 :config
-		 (load-theme 'doom-challenger-deep t))
+		 (load-theme 'doom-one t))
 	 #+END_SRC
 ** Company
 	 #+BEGIN_SRC emacs-lisp

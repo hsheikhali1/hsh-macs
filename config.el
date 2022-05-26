@@ -161,6 +161,8 @@
       (evil-define-key 'normal 'lsp-ui-doc-mode
 	[?K] #'lsp-ui-doc-glance)
 
+      (evil-set-initial-state 'dired-mode 'emacs) ;; enter emacs mode when in dired mode
+
       (dolist (mode '(help-mode-map
 				      calendar-mode-map
 				      (evil-define-key 'motion  mode "q" 'kill-this-buffer))))
