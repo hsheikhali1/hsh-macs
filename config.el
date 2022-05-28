@@ -308,7 +308,9 @@
 (use-package lsp-mode
 	:commands (lsp lsp-deferred))
 
-(use-package lsp-ui)
+(use-package lsp-ui
+      :config
+      (setq lsp-ui-doc-position 'at-point))
 
 ;; prettier
 (use-package prettier-js
@@ -334,6 +336,7 @@
       :hook (
 		     (typescript-mode . lsp)
 		     (typescript-mode . highlight-indent-guides-mode)
+		     (typescript-mode . prettier-js-mode)
 		     )
 	:config
 	(setq-default typescript-indent-level 2))
@@ -363,13 +366,10 @@
 		     (web-mode . lsp)
 		     (css-mode . lsp)
 		     (scss-mode . lsp)
+		     (web-mode . prettier-js-mode)
 		     )
 	:commands (web-mode)
 	:mode (("\\.tsx\\'" . web-mode)
-		       ("\\.tsx\\'" . emmet-mode)
-		       ("\\.jsx\\'" . emmet-mode)
-		       ("\\.js\\'" . emmet-mode) ;; if js is used for react files
-		       ("\\.html\\'" . emmet-mode)
 		       ("\\.html\\'" . web-mode)))
 
 (use-package flycheck)
@@ -417,3 +417,17 @@
 
 (use-package yasnippet
       :init (yas-global-mode 1))
+
+(use-package vterm-toggle
+      :config
+      (general-create-definer my-leader-def
+	;; :prefix my-leader
+	;; or without a variable
+	:prefix ", v")
+
+      (general-def :states '(normal motion emacs) "," nil)
+
+      (my-leader-def
+	:states '(normal motion visual)
+	"n" 'vterm-toggle-show :which-key "Toggle Vterm"
+	"h" 'vterm-toggle-hide :whick-key "Hide current vterm"))
