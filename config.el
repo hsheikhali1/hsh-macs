@@ -73,8 +73,10 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(set-face-attribute 'default nil :font "JetBrains Mono" :weight 'Bold :height 130)
-(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'Bold :height 130)
+;; (set-face-attribute 'default nil :font "JetBrains Mono" :weight 'Bold :height 130)
+;; (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :weight 'Bold :height 130)
+(set-face-attribute 'default nil :font "Source Code Pro" :weight 'Medium :height 130)
+(set-face-attribute 'fixed-pitch nil :font "Source Code Pro" :weight 'Medium :height 130)
 
 (use-package highlight-indent-guides)
 (highlight-indent-guides-mode 1)
@@ -162,6 +164,8 @@
 	[?K] #'lsp-ui-doc-glance)
 
       (evil-set-initial-state 'dired-mode 'emacs) ;; enter emacs mode when in dired mode
+      (evil-set-initial-state 'git-commit-mode 'insert) ;; enter insert mode when in commit screen
+      (evil-set-initial-state 'vterm 'insert) ;; enter insert mode when toggling vterm
 
       (dolist (mode '(help-mode-map
 				      calendar-mode-map
@@ -196,40 +200,45 @@
       :ensure t)
 
 (use-package ivy
-  :diminish ivy-mode
-  :config
-  (setq ivy-extra-directories nil) ;; hides . and .. directories
-  (setq ivy-initial-inputs-alist nil) ;; removes the ^ in ivy searches
-  (setq-default ivy-height 15)
-  (setq ivy-fixed-height-minibuffer t)
-  (ivy-mode 1)
+      :diminish ivy-mode
+      :config
+      (setq ivy-extra-directories nil) ;; hides . and .. directories
+      (setq ivy-initial-inputs-alist nil) ;; removes the ^ in ivy searches
+      (setq-default ivy-height 15)
+      (setq ivy-fixed-height-minibuffer t)
+      (ivy-mode 1)
 
-  ;; Shows a preview of the face in counsel-describe-face
-  (add-to-list 'ivy-format-functions-alist '(counsel-describe-face . counsel--faces-format-function)))
+      ;; Shows a preview of the face in counsel-describe-face
+      (add-to-list 'ivy-format-functions-alist '(counsel-describe-face . counsel--faces-format-function)))
 
-  ;; :general
-  (general-define-key
+      ;; :general
+      (general-define-key
 	:keymaps '(ivy-minibuffer-map ivy-switch-buffer-map)
 	"TAB" 'ivy-next-line
 	"S-TAB" 'ivy-previous-line
 	"<backtab>" 'ivy-previous-line)
 
 (use-package all-the-icons-ivy-rich
-  :init (all-the-icons-ivy-rich-mode 1)
-  :config
-  (setq all-the-icons-ivy-rich-icon-size 1.0))
+      :init (all-the-icons-ivy-rich-mode 1)
+      :config
+      (setq all-the-icons-ivy-rich-icon-size 1.0))
 
 (use-package ivy-rich
-  :after (ivy)
-  :init
-  (setq ivy-rich-path-style 'abbrev)
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  :config
-  (ivy-rich-mode 1))
+      :after (ivy)
+      :init
+      (setq ivy-rich-path-style 'abbrev)
+      (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+      :config
+      (ivy-rich-mode 1))
 
 (use-package ivy-posframe
-  :config
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display))))
+      :config
+      (setq ivy-posframe-display-functions-alist '((swiper . ivy-display-function-fallback)
+											       (counsel-rg . ivy-display-function-fallback)
+											       (t . ivy-posframe-display))
+		ivy-posframe-height-alist
+		'((swiper . 10)
+		      (counsel-rg . 10))))
 
 (ivy-posframe-mode 1)
 
@@ -240,7 +249,7 @@
 
 (use-package doom-themes
       :config
-      (load-theme 'doom-challenger-deep t))
+      (load-theme 'doom-one t))
 
 (use-package company
 		       :diminish company-mode
